@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;900&family=Roboto:wght@100;300;400;500;700&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    color: var(--c9);
+    font-family: "Roboto", monospace, sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease 0s;
+}
+
+:root {
+    --c0: #131316;
+    --c1: #1C1C21;
+    --c2: #26262C;
+    --c3: #2F3037;
+    --c4: #393A41;
+    --c5: #4B4C52;
+    --c6: #5B5C62;
+    --c7: #6A6B70;
+    --c8: #ADADB0;
+    --c9: #F2F2F2;
+    --c10: #1A3B7D;
+    --c11: #1A3B7D;
+    --c12: #1951BD;
+    --c13: #1463F3;
+}
+
+/* Header fix */
+* {scroll-margin-top: 5rem;}
+
+.outlinetext {
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--c9);
+    text-stroke-width: 1px;
+    text-stroke-color: var(--c9);
+    font-stretch: ultra-expanded;
+}
+
+h1 {font-size: 5em;}
+h2 {font-size: 2.5em;}
+h3 {font-size: 2em;}
+h4 {font-size: 1em;}
+h5 {font-size: 0.875em;}
+h6 {font-size: 0.66em;}
+
+button, button.bright {
+    border-radius: 2em;
+    padding: 0.75em;
+    background-color: var(--c13);
+    border: 1px var(--c13) solid;
+    transition: 0.1s ease;
+}
+button:hover, button.bright:hover{
+    background-color: var(--c11);
+    border-color: transparent;
+}
+button:active, button.bright:active{
+    background-color: var(--c12);
+    border-color: transparent;
+}
+
+button.dark {
+    background-color: var(--c0);
+}
+button.dark:hover {
+    background-color: var(--c11);
+}
+button.dark:active {
+    background-color: var(--c12);
+}
+a > button {
+    border-radius: 2em;
+}

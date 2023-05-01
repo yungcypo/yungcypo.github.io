@@ -1,0 +1,35 @@
+#popup {
+    background-color: rgba(0,0,0, .75);
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup > div {
+    padding: 2em 4em;
+    border-radius: 1em;
+    background-color: var(--c0);
+    border: 1px solid var(--c9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5em;
+}
+
+#popup > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 0.25em;
+}
+
+
+
