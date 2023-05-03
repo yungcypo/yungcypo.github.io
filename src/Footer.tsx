@@ -3,7 +3,7 @@ import "/src/footer.css";
 function Footer() {
     return (
         <footer>
-            <p>&copy; Cypo 2023</p>
+            <p>&copy; Cypo 2023 <br /><span style={{fontSize: '0.8em'}}>v230503.2303</span></p>
             <img id="smile" src="/assets/images/icons/smile.svg" alt=":)"/>
             <div>
                 <a href="mailto:cypooriginal@gmail.com" target="_blank" title="cypooriginal@gmail.com">

@@ -17,6 +17,7 @@ function Landing() {
             </div>
             <div id="projekty">
                 <h1 className="outlinetext">PROJEKTY</h1>
+                <a href="/numberle/">Numberle</a>
             </div>
             <div id="kontakt">
                 <h1 className="outlinetext">KONTAKT</h1>

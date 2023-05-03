@@ -1,0 +1,80 @@
+#main {
+    margin-top: 5em;
+    min-height: 200vh;
+    background-color: var(--c1);
+    padding: 2em;
+    text-align: center;
+}
+p {
+    font-weight: 300;
+}
+
+#help {
+    width: 1.5em;
+    border-radius: 1.5em;
+}
+#help:hover{background-color: var(--c11);}
+#help:active{background-color: var(--c12);}
+
+#game {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 2em;
+    gap: 2em;
+}
+
+#calc {
+    display: grid;
+    grid-template-columns: repeat(3, 3em);
+    gap: 0.5em;
+    justify-content: start;
+    align-content: start;
+    justify-items: center;
+    align-items: center;
+
+}
+#calc > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
+    border: 1px solid var(--c7);
+    border-radius: 0.5em;
+}
+#calc img {
+    width: 50%;
+}
+#calc img, #calc p {
+    user-select: none;
+}
+#calc > div {
+    transition: 0.2s;
+}
+
+#calc > div:hover {background-color: var(--c11);}
+#calc > div:active {background-color: var(--c12);}
+.backspace:hover{background-color: var(--c20) !important;}
+.backspace:active{background-color: var(--c21) !important;}
+.check:hover{background-color: var(--c30) !important;}
+.check:active{background-color: var(--c31) !important;}
+
+#numberle {
+    display: grid;
+    grid-template-columns: repeat(4, 4em);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 0.5em;
+    justify-content: center;
+    align-content: start;   
+}
+
+#numberle > div {
+    width: 4em;
+    height: 4em;
+    border: 1px solid var(--c5);
+}
+
+.noborder {
+    border: none !important;
+}
