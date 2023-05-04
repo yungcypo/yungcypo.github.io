@@ -1,6 +1,5 @@
 #main {
     margin-top: 5em;
-    min-height: 200vh;
     background-color: var(--c1);
     padding: 2em;
     text-align: center;
@@ -59,8 +58,9 @@
 
 #numberle {
     display: grid;
+    /* columns and rows added thru react */
     grid-template-columns: repeat(4, 4em);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(1fr);
     gap: 0.5em;
     justify-content: center;
     align-content: start;   
@@ -70,6 +70,13 @@
     width: 4em;
     height: 4em;
     border: 1px solid var(--c5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#numberle > div > p{
+    font-size: 2em;
+    font-weight: 500;
 }
 
 p {
