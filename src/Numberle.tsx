@@ -21,7 +21,7 @@ function Numberle() {
 
     return (
         <div id="main">
-            <h1 className="outlinetext">NUMBERLE</h1><img id="help" src="/assets/images/icons/help.svg" alt="?" />
+            <h1 className="outlinetext">NUMBERLE</h1>
             <div id="game">
                 <div id="numberle">
                     {divs1}
@@ -36,6 +36,7 @@ function Numberle() {
         </div>
     );
 }
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
