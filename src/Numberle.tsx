@@ -19,7 +19,6 @@ function Numberle() {
         divs2.push(<div key={i}><p>{i}</p></div>)
     }
 
-
     return (
         <div id="main">
             <h1 className="outlinetext">NUMBERLE</h1><img id="help" src="/assets/images/icons/help.svg" alt="?" />
