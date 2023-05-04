@@ -1,9 +1,12 @@
 import "/src/footer.css";
 
+
 function Footer() {
+    const v:string = "v20230504.2331";
+
     return (
         <footer>
-            <p>&copy; Cypo 2023 <br /><span style={{fontSize: '0.8em'}}>v230503.2303</span></p>
+            <p>&copy; Cypo 2023 <br /><span style={{fontSize: '0.8em'}}>{v}</span></p>
             <img id="smile" src="/assets/images/icons/smile.svg" alt=":)"/>
             <div>
                 <a href="mailto:cypooriginal@gmail.com" target="_blank" title="cypooriginal@gmail.com">
