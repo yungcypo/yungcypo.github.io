@@ -79,6 +79,21 @@
     font-weight: 500;
 }
 
+#result{
+    background-color: var(--c2);
+    border-radius: 2em;
+    z-index: 150;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 p {
     font-weight: 300;
 }
@@ -86,3 +101,8 @@ p {
 .noborder {
     border: none !important;
 }
+
+.yellow{background-color: var(--cyellow);}
+.yellow > p{color: var(--c1);}
+.green{background-color: var(--c31);}
+.none{background-color: rgba(0,0,0, .5);}

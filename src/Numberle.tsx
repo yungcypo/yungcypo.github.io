@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -6,44 +7,98 @@ import Popup from "./Popup";
 import "/src/main.css";
 import "/src/numberle.css";
 
+
 function Numberle() {
-    function getRandomNumber(min: number, max: number): number {
-        return Math.floor(Math.random() * max-min) + min;
+    /* keyboard events */
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            event.preventDefault()
+            if (event.key == "Backspace"){
+                addNumber(-1)
+            } else if (event.key == "Enter"){
+                enter()
+            } else if ("0123456789".includes(String(event.key))){
+                addNumber(event.key)
+            }
+        };
+        window.addEventListener("keydown", handleKeyPress);
+    }, []);
+
+    /* toggle visibility */
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+
+    function getRandomNumber(): number {
+        return Math.floor(Math.random() * 9999 - 1000) + 1000;
     }
+    let n: number = getRandomNumber();
+
 
     var currentInput:number = 0  /* key of div that is currently ready to use */
     var lowestInput:number = 0
+    var inputEnabled:boolean = true
 
+    
     function addNumber(n:any){
         const numberle = document.getElementById("numberle")
-
-        if (n == -1){
+        if (n == -1 && inputEnabled){
             guessedNumber = guessedNumber.slice(0, -1)
             if (numberle){
                 if(currentInput > lowestInput){
                     currentInput -= 1
                 }
-                console.log("Currentinput = " + currentInput)
                 numberle.children[currentInput].innerHTML = ""
             }
             
-        } else if (guessedNumber.length < 4 && guessedNumber.length >= 0){
+        } else if (guessedNumber.length < 4 && guessedNumber.length >= 0 && inputEnabled){
             guessedNumber += String(n)
             if (numberle){
                 numberle.children[currentInput].innerHTML = "<p>" + n + "</p>"
                 currentInput += 1
             }
         }
-        console.log("Guessed number: " + guessedNumber)
-
-
     }
     let guessedNumber:string = ""
 
     function enter(){
-        if(guessedNumber.length == 4){
-            console.log("ENTER")
+        const numberle = document.getElementById("numberle")
+        const calc = document.getElementById("calc")
+        if(guessedNumber.length == 4 && numberle && calc && inputEnabled){
+            if (guessedNumber == String(n)){getResult(true)}
+            for (let i = 0; i < 4; i++){
+                if (String(n)[i] == guessedNumber[i]){
+                    numberle.children[currentInput - 4 + i].classList.add("green")
+                } else if (String(n).includes(guessedNumber[i])){
+                    numberle.children[currentInput - 4 + i].classList.add("yellow")
+                } else {
+                    numberle.children[currentInput - 4 + i].classList.add("none")
+                }
+
+                /* TODO show colors on calc */
+            }
+            lowestInput += 4;
+            guessedNumber = "";
+            if (lowestInput >= numberle.children.length){getResult(false)}
         }
+    }
+
+    let result:any;
+    function getResult(bool:boolean){
+        inputEnabled = false
+        result = (
+            <div style={{display: "block"}}>
+                <h2 style={{color: bool ? "var(--c31)" : "var(--c21)"}}>
+                    YOU {bool ? "WON" : "LOST"}!
+                </h2>
+                <p>The number was {n}</p>
+            </div>
+        )
+
+        
     }
 
 
@@ -63,10 +118,6 @@ function Numberle() {
         );
     }
 
-    let n: number = getRandomNumber(1000, 9999);
-
-    console.log(n);
-
     return (
         <div id="main">
             <h1 className="outlinetext">NUMBERLE</h1>
@@ -81,17 +132,20 @@ function Numberle() {
                     <div key={0} onClick={() => addNumber(0)}><p>0</p></div>
                     <div className="noborder check" onClick={() => enter()}><img src="/assets/images/icons/check.svg" alt="" /></div>
                 </div>
-                <p>{n}</p>
+                <div id="result">{result}</div>
+                {/* TODO make win/lose popup */}
             </div>
         </div>
     );
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <React.StrictMode>
+    //<React.StrictMode>
+    //</React.StrictMode>
+    <>
         <Header />
         <Numberle />
         {/* <Popup /> */}
         <Footer />
-    </React.StrictMode>
+    </>
 );

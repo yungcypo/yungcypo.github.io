@@ -2,7 +2,7 @@ import "/src/footer.css";
 
 
 function Footer() {
-    const v:string = "v20230504.2331";
+    const v:string = "v20230505.1830";
 
     return (
         <footer>
