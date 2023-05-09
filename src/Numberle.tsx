@@ -24,19 +24,18 @@ function Numberle() {
         window.addEventListener("keydown", handleKeyPress);
     }, []);
 
-    /* toggle visibility */
-    const [isVisible, setIsVisible] = useState(true);
-
+    /* visibility of popup after game */
+    const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     };
 
 
+
     function getRandomNumber(): number {
         return Math.floor(Math.random() * 9999 - 1000) + 1000;
     }
-    let n: number = getRandomNumber();
-
+    let n:number = getRandomNumber();
 
     var currentInput:number = 0  /* key of div that is currently ready to use */
     var lowestInput:number = 0
@@ -62,13 +61,20 @@ function Numberle() {
             }
         }
     }
-    let guessedNumber:string = ""
+
+    let guessedNumber:string = "";
+    let winlost:boolean = true;
 
     function enter(){
+        console.log(n)
         const numberle = document.getElementById("numberle")
         const calc = document.getElementById("calc")
-        if(guessedNumber.length == 4 && numberle && calc && inputEnabled){
-            if (guessedNumber == String(n)){getResult(true)}
+        if (guessedNumber.length == 4 && numberle && calc && inputEnabled){
+            if (guessedNumber == String(n)){
+                setIsVisible(true); 
+                inputEnabled = false;
+                winlost = true;
+            }
             for (let i = 0; i < 4; i++){
                 if (String(n)[i] == guessedNumber[i]){
                     numberle.children[currentInput - 4 + i].classList.add("green")
@@ -82,25 +88,17 @@ function Numberle() {
             }
             lowestInput += 4;
             guessedNumber = "";
-            if (lowestInput >= numberle.children.length){getResult(false)}
+            if (lowestInput >= numberle.children.length && guessedNumber != String(n)){
+                setIsVisible(true) 
+                winlost = false;
+                inputEnabled = false;
+            } else if (lowestInput >= numberle.children.length && guessedNumber == String(n)){
+                setIsVisible(true)
+                winlost = true;
+                inputEnabled = false;
+            }
         }
     }
-
-    let result:any;
-    function getResult(bool:boolean){
-        inputEnabled = false
-        result = (
-            <div style={{display: "block"}}>
-                <h2 style={{color: bool ? "var(--c31)" : "var(--c21)"}}>
-                    YOU {bool ? "WON" : "LOST"}!
-                </h2>
-                <p>The number was {n}</p>
-            </div>
-        )
-
-        
-    }
-
 
     let divs1 = [];
     let divs1_rows = 6;
@@ -118,6 +116,7 @@ function Numberle() {
         );
     }
 
+
     return (
         <div id="main">
             <h1 className="outlinetext">NUMBERLE</h1>
@@ -132,9 +131,15 @@ function Numberle() {
                     <div key={0} onClick={() => addNumber(0)}><p>0</p></div>
                     <div className="noborder check" onClick={() => enter()}><img src="/assets/images/icons/check.svg" alt="" /></div>
                 </div>
-                <div id="result">{result}</div>
-                {/* TODO make win/lose popup */}
             </div>
+            {isVisible && <div id="result">
+                <div>
+                    <h2 style={{color: winlost ? "var(--c31)" : "var(--c21)"}}>
+                        YOU {winlost ? "WON" : "LOST"}!
+                    </h2>
+                    <p>The number was {n}</p>
+                </div>
+            </div>}
         </div>
     );
 }
@@ -145,7 +150,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <>
         <Header />
         <Numberle />
-        {/* <Popup /> */}
+        <Popup />
         <Footer />
     </>
 );

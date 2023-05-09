@@ -79,10 +79,19 @@
     font-weight: 500;
 }
 
-#result{
+#result {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 150;
+    background-color: rgba(0,0,0, .5);
+}
+#result > div{
     background-color: var(--c2);
     border-radius: 2em;
-    z-index: 150;
+    padding: 2em;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -91,7 +100,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    border: 1px solid var(--c9);
 }
 
 p {
