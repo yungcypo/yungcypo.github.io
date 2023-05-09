@@ -1,20 +1,17 @@
 {
   "name": "yungcypo.github.io",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
-  "homepage": "https://yungcypo.github.io/yungcypo.github.io",
+  "homepage": "https://yungcypo.github.io/",
   "scripts": {
-    "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "start": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
